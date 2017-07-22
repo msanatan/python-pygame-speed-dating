@@ -414,8 +414,7 @@ def get_grade(mark):
     # If all other conditions are false, do this code
     else:
         result = 'F' # Pretty harsh from the school if you ask me
-    
-    retun result
+    return result
 
 get_grade(100)  # 'A'
 get_grade(85)   # 'B'
