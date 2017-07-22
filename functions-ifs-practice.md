@@ -37,7 +37,7 @@ Luckily with functions there's an easier way to avoid to jail.
 ```python
 # Let's first define the function
 def king_print(message):
-    print('For the glrory of the King')
+    print('For the glory of the King')
     print(message)
     print('He is mighty!')
 
@@ -149,19 +149,19 @@ return a value. Huh? Let's seee
 def add_5_no_return(n):
     print(n + 5)
 
-add_5_wrong(10) # Shows 15, so it works right?
+add_5_no_return(10) # Shows 15, so it works right?
 
 def add_5_return(n):
     return n + 5
 
-add_5_wrong(10) # Shows 15
+add_5_return(10) # Shows 15
 ```
 
 So... what's the issue? Well we get a number and we add 5 to it. It'd be nice
 if we can use it with other calculators as well:
 
 ```python
-10 * add_5_returns(8) # 130
+10 * add_5_return(8) # 130
 10 * add_5_no_return(8) # Error!
 ```
 
