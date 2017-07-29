@@ -86,9 +86,160 @@ len(listception) # 5 - ['bob', ['damian', 'junior', 'stephen', 3], 9, 'rita', [6
 len(listception[1]) # 4 - ['damian', 'junior', 'stephen', 3]
 ```
 
+You can use negative numbers for list indices as well. Instead of going from 
+left to right, you'll get the items from right to left.
+
+```python
+favourite_numbers = [3, 42, 69, 7]
+favourite_numbers[-1] # 7
+favourite_numbers[-2] # 7
+favourite_numbers[-3] # 7
+favourite_numbers[-4] # 7
+```
+
+You should also get accustomed to some common errors. Remember, errors are 
+awesome because they tell us exactly what's wrong. Let's try the following:
+
+```python
+favourite_numbers = [3, 42, 69, 7]
+favourite_numbers[4]
+favourite_numbers[-5]
+```
+
+If you try the above in your Python interpreter you should get
+
+```
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+```
+
+So if ever you see that error you know that the list doesn't have an item for
+that index. Either the list is missing items or the index is inappropriate for
+the list.
+
+### List Slicing
+
+Now that you're comfortable with indices, let's to some cool things with lists.
+Slicing is taking a portion of a list and creating a new one. Think of it like
+cutting a slice of cake, but the original one stays intact (wouldn't that be
+absolutely amazing?). Let's see below:
+
+```python
+fruits = ['banana', 'mango', 'tomato', 'plum', 'guava']
+fruits[1] # 'mango'
+
+# Let's slice to get a new list that starts from mango
+fruits[1:]
+# Above we tell Python we want a list that starts from the fruit's second item
+# (recall that the 2nd item has index 1) till the end of the list
+
+# So if we wanted plum and guava chow (ewww) we'll do the following
+fruits[3:]
+
+# Let's slice to get a new list that ends with plum
+fruits[:4]
+# Above we tell Python to start slicing from the beginning and end with fruit's
+# 4th item. It's a little tricky, when a number came before the colon we gave
+# the item's index. Now we give one more than the item's index. Practice more!
+fruits[:5] # ['banana', 'mango', 'tomato', 'plum', 'guava']
+fruits[:1] # ['banana']
+fruits[:3] # ['banana', 'mango', 'tomato']
+
+# Let's take it a step further and put them both together
+fruits[1:4] # ['mango', 'tomato', 'plum']
+# Make sure you understand, you're skipping the first element and going up to 
+# the fourth one. Skip banana and stop and plum
+fruits[2:3] # Skip banana and mango, end at tomato. So only tomato!
+```
+
+### List Functions
+
+Lists also come with useful functions that can changed the elements contained
+within. Let's look at how easy it is to add to a list:
+
+```python
+
+my_first_list = ['bleach', 'naruto']
+my_second_list = ['coldplay', 'chainsmokers', 'dj khaled']
+# We can add two lists together
+my_third_list = my_first_list + my_second_list
+my_third_list # ['bleach', 'naruto', 'coldplay', 'chainsmokers', 'dj khaled']
+# And yes, order matters
+my_fourth_list = my_second_list + my_first_list
+my_fourth_list # ['coldplay', 'chainsmokers', 'dj khaled', 'bleach', 'naruto']
+
+
+alpha = ['a', 'b', 'c', 'd', 'e']
+# You can add an item to a list by the append method
+alpha.append('f')
+alpha # ['a', 'b', 'c', 'd', 'e', 'f']
+alpha.append('g')
+alpha # ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+```
+
+`append` simply adds an item to the end of the list. You may be asking... why does
+that function come after the list and '.'? That's because, it's no ordinary
+function, it's a method. We'll learn more about them later when we discucss
+Classes and Objects. For now, think of lists as special variables that can
+store both data and functions, which we call methods.
+
+```python
+# Here are a couple other nifty functions that your list has access to
+# Sort is a breeze
+num_list = [7, 0.5, 23, 9]
+num_list.sort()
+num_list # [0.5, 7, 9, 23]
+
+# As well as reversing
+num_list.reverse()
+num_list # [23, 9, 7, 0.5]
+num_list.reverse()
+num_list # [0.5, 7, 9, 23]
+```
+
 ### Lists and If Statements
+It's not hard to imagine that there'll be a time when you'd like to know if an
+item is inside a list. Luckily Python makes this dead simple
+
+```python
+cool_kids = ['carla', 'prakash', 'john', 'priya', 'mei']
+'marcus' in cool_kids # False, damn!
+'priya' in cool_kids # True
+
+# Use it in if statements like other Boolean expressions
+evens = [2, 4, 6, 8, 10, 12]
+
+# This does not print
+if 5 in evens:
+    print('Gotcha! You\'re not in the list of even numbers')
+
+awesome_number = 8
+# This prints
+if awesome_number in evens:
+    print('Say it loud, I\'m even and proud')
+```
 
 ### Exercises 1
+1. A list has a length of 4, what are its indices?
+2. Consider the list `twelves = [12, 'twelve', [12.0]]`. What are:
+    1. `twelves[1]`
+    2. `twelves[2]`
+    3. `twelves[-8]`
+    4. `twelves[-1][0] / 3`
+    5. `twelves[-3]`
+3. Consider `a = [12, 45, 88, 93, 232, 121]`
+    1. Add 33 to a
+    2. Slice a so that a new variable b has from the 3rd to 6th items of a
+    3. Add 90 to b
+    4. Sort b
+    5. Reverse a
+4. Given list `l1 = ['morning', 'noon', 'evening']` and `l2 = [9.9, 3, 11.5]`, create
+    a list l3 using list functions and operators so that it has
+    [11.5, 9.9, 3, 'morning', 'noon', 'evening', 9.9, 3, 11.5]. 
+5. Write a function is_waldo_here that accepts a list of suspects. If 'waldo' is
+    in the list then **return** "We can find Waldo, go search!". Otherwise 
+    return, "Maybe we'll find him... tomorrow!"
 
 ## Tuples
 
