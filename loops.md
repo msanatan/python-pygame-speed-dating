@@ -165,8 +165,12 @@ for i in range(0, len(my_childhood)):
 
 ### Exercises 1
 1. For-loops are best suited to finite objects - true or false?
-2. Write a function my product that uses a for-loop to multiply every item
+2. Write a function `product` that uses a for-loop to multiply every item
     in a list passed as an argument.
+    1. What happens if the empty list is given? Modify the function such that
+        if an empty list is given, 1 is returned
+    2. What happens if the list has data that aren't numbers? Raise an error
+        if a non-number is detected.
 3. Use the range function to create for loop that prints the numbers 35 to
     210 in increments of 3
 
