@@ -173,6 +173,11 @@ for i in range(0, len(my_childhood)):
         if a non-number is detected.
 3. Use the range function to create for loop that prints the numbers 35 to
     210 in increments of 3
+4. Write a function my_max which determines the highest number found in a list.
+    Let's break it down, you will be constantly comparing the current number to
+    last recorded highest number. Think about, the highest number can appear
+    anywhere in the list, right? So what do you compare the first number to?
+    When you create a max_num variable, first set it to -100000000000. 
 
 ## While Loops
 Another common way to loop through code is the while-loop. The for-loop loops
@@ -255,11 +260,11 @@ Please enter your favourite number!
 ```
 
 ### Exercises 2
-1. Write a function 'guess num' that creates a random number between 1
+1. Write a function `guess_num` that creates a random number between 1
     and 10 then asks the user to enter a number within that range. If the
     number is smaller or larger the user will be notified accordingly. The user
     can only enter if the number entered is correct.
-2. Write a function the 'print until odd' that prints out the elements of a list
+2. Write a function `print_until_odd` that prints out the elements of a list
     but stops if the current number is odd. If it prints out every element of
     the list then display a congratulatory message. If if finds an odd number,
     tell the user that one was found and exit the loop.
