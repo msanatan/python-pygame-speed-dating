@@ -59,7 +59,7 @@ def my_sum_1(items):
     total = 0
     for item in items:
         total += item
-        return total
+    return total
 
 my_sum_1([1,2,4,5]) # 12
 
