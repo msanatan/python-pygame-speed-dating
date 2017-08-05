@@ -51,7 +51,7 @@ def print_double_list(double_list):
         for dl_item in dl:
             print(dl_item)
 
-print_double_list([1,2],['bob',10,34.0],['c'])
+print_double_list([[1,2],['bob',10,34.0],['c']])
 
 
 # While Python already has a built in sum function, we can do one too!
