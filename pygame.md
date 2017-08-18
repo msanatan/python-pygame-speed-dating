@@ -111,7 +111,7 @@ So the while loop is actually where our game loop begins with the while loop.
 We only want the while loop to quit when the user quits, and there's an event
 for that later on. So we put `while True:`, that way the loop will never exit.
 
-In pygame we use a for loop to get input from the player. We'll touch more on
+In Pygame we use a for loop to get input from the player. We'll touch more on
 that later but also ensure to include that for loop. Pygame needs that for loop
 to function properly, specifically it needs a program to get the events. Even
 if your code does not have much user interaction like what we're making, it 
