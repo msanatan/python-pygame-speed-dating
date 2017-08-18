@@ -140,13 +140,13 @@ background of the screen to black by filling it with black pixels. We then
 draw a red rectangle on the screen. Look at the arguments: the first is the
 screen we're drawing on, the second is the colour but the last is quite
 interesting. That argument is a tuple with four items describing where the
-rectangle is going to be drawn.
+rectangle is going to be drawn and how big it'll be.
 
 (0, 0, 50, 50)
-1. left - 0
-2. top - 0
-3. right - 50
-4. bottom - 50
+1. x - 0
+2. y - 0
+3. width - 50
+4. height - 50
 
 Strange coordinates right? Well not too strange. In Pygame and many other
 libraries used to create games, coordinates start at (0, 0) which means top-left.
@@ -196,14 +196,45 @@ Now let's run your file, rectangles.py. You should see the following:
 
 Congratulations! You've just done your first Pygame script! We simply drew a
 red rectangle on the screen that was 50 pixels long and wide (so really, it's
-a square...). You would have observed that we have more colours, let's draw
+a square...).
+
+### More Rectangles
+
+You would have observed that we have more colours, let's draw
 another rectangle - it'll be green, 30px wide and 20px long, and at the
 bottom right corner of the screen.
 
 The tricky part of this would be the position so let's think about it for a bit.
 Every Pygame object on the screen has a corresponding rectangle with its
-coordinates. As we mentioned before the coordinates are 4 positions describing
-how far away an object is from the origin on its: left, top, right and bottom.
+coordinates. As we mentioned before the coordinates are 4 numbers describing
+how far away an object is from the origin on its: x coordinate, y coordinate,
+width and height. The x and y coordinates are for the **top left** of the shape.
+
+We know the screen's top left is (0, 0), the top right is (WIDTH, 0), the
+bottom left is (0, HEIGHT). So what's the bottom right corner? That's right:
+(WIDTH, HEIGHT). Confused? If you went all the way to the right you travelled 
+the entire width of the game screen. If you went all the way to the bottom
+you travelled the entire height of the game screen. Put them together and you
+got bottom right.
+
+1. x - we need this to be 30px away from the right. So, WIDTH - 30
+2. y - we need this to be 20px away from the bottom. So. HEIGHT - 20
+3. width - 30px
+4. height - 20px
+
+With the desired rectangle coordinates, we can finally draw it
+
+```python
+pygame.draw.rect(screen,GREEN,(WIDTH - 30, HEIGHT - 20, 30, 20))
+```
+
+It's beautiful! We got an elegant, tiny rectangle in the corner. I think it 
+would look better if we had some space from the corner, don't you think?
+Let's try this instead:
+
+```python
+pygame.draw.rect(screen,GREEN,(WIDTH - 40, HEIGHT - 30, WIDTH - 10, HEIGHT -10))
+```
 
 
 ## Exercises
