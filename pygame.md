@@ -197,12 +197,14 @@ Now let's run your file, rectangles.py. You should see the following:
 Congratulations! You've just done your first Pygame script! We simply drew a
 red rectangle on the screen that was 50 pixels long and wide (so really, it's
 a square...). You would have observed that we have more colours, let's draw
-another rectangle - this it'll be green, 30px wide and 20px long, and at the
-bottom right corner of the screen. The tricky part of this would be the position
-so let's think about it for a bit. Every Pygame object on the screen has a
-corresponding rectangle with it's coordinates. As we mentioned before the 
-coordinates are 4 positions describing how far away an object is from the origin
-on its: left, top, right and bottom.
+another rectangle - it'll be green, 30px wide and 20px long, and at the
+bottom right corner of the screen.
+
+The tricky part of this would be the position so let's think about it for a bit.
+Every Pygame object on the screen has a corresponding rectangle with its
+coordinates. As we mentioned before the coordinates are 4 positions describing
+how far away an object is from the origin on its: left, top, right and bottom.
+
 
 ## Exercises
 1. Read the following documentation for drawing circles:
