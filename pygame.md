@@ -14,6 +14,7 @@ remaining in your pen, etc.
 All games have states as well. Take this classic - Super Mario Brothers!
 
 ![Super Mario Brothers](http://www.retrogames.cz/games/005/NES_01.gif)
+http://www.retrogames.cz/games/005/NES_01.gif
 
 When you first start the game your state will be Mario's position at the left
 side of the screen, the positions of the other enemies, 0 points and 0 coins,
@@ -66,7 +67,7 @@ RED = (255, 50, 50)
 GREEN = (50, 255, 50)
 ```
 
-The keen reader would notice two things. All the variables are capitalised and
+The keen reader would notice two things: all the variables are capitalised; and
 in the first assignment WIDTH and HEIGHT are on the same line. The variables are
 capitalised to show they're constants i.e. values that would not change. This is
 a convention i.e. something the community maintains as good coding habits. You
@@ -148,13 +149,17 @@ rectangle is going to be drawn.
 4. bottom - 50
 
 Strange coordinates right? Well not too strange. In Pygame and many other
-libraries used to create games, coordinates start at (0, 0) which mean top-left.
+libraries used to create games, coordinates start at (0, 0) which means top-left.
 So think of your game screen's window. If you had to write out coordinates
 going from left to right, you'll start with (0, 0) and end with (WIDTH, 0). 
 Essentially as you go right you keep adding one to the x-coordinate.
 
 If you wanted to go downwards from the origin/top-left, you'll end up at
 (0, HEIGHT). Essentially as you go down you keep adding one to the y-coordinate.
+Here's a nifty diagram to help you out.
+![Foo](http://farm8.staticflickr.com/7306/12161882146_8f50e29d53_o.png)
+http://ctc-dev.verkstad.cc/en/course-literature/screens-and-pixels/
+
 You'll get more hands on practice, just keep it in mind!
 
 You should now have Python code that looks like the following:
@@ -189,7 +194,15 @@ Now let's run your file, rectangles.py. You should see the following:
 
 ![Red Rectangle](Red_Rectangle.png)
 
-Congratulations! You've just done your first Pygame script!
+Congratulations! You've just done your first Pygame script! We simply drew a
+red rectangle on the screen that was 50 pixels long and wide (so really, it's
+a square...). You would have observed that we have more colours, let's draw
+another rectangle - this it'll be green, 30px wide and 20px long, and at the
+bottom right corner of the screen. The tricky part of this would be the position
+so let's think about it for a bit. Every Pygame object on the screen has a
+corresponding rectangle with it's coordinates. As we mentioned before the 
+coordinates are 4 positions describing how far away an object is from the origin
+on its: left, top, right and bottom.
 
 ## Exercises
 1. Read the following documentation for drawing circles:
