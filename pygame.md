@@ -131,7 +131,7 @@ program with good ole `sys.exit()`.
 
 ```python
 screen.fill(BLACK) # Paint the screen black
-pygame.draw.rect(screen,RED,(0, 0,50,50)) # Draw a red rectangle
+pygame.draw.rect(screen,RED,(0, 0, 50, 50)) # Draw a red rectangle
 pygame.display.update() # Render the changes to the screen
 ```
 
@@ -185,7 +185,7 @@ while True:
             sys.exit()
 
     screen.fill(BLACK) # Paint the screen black
-    pygame.draw.rect(screen,RED,(0, 0,50,50)) # Draw a red rectangle
+    pygame.draw.rect(screen,RED,(0, 0, 50, 50)) # Draw a red rectangle
     pygame.display.update() # Render the changes to the screen
 
 ```
