@@ -126,8 +126,8 @@ if event.type==pygame.QUIT:
 Let's say you're tired of your awesome game you'll be creating and decide to 
 quit. Well we have to ensure you're closing off your game first, we do so with
 the above if statement. After we verified that you want to exit, we first run
-pygame.quit() to ensure it shuts off properly. Finally we exit the Python
-program with good ole sys.exit(). 
+`pygame.quit()` to ensure it shuts off properly. Finally we exit the Python
+program with good ole `sys.exit()`. 
 
 ```python
 screen.fill(BLACK) # Paint the screen black
