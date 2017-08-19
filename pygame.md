@@ -266,7 +266,12 @@ The final result should look like this:
 ## Animation
 We're going to step it up a bit and move an image around a screen. You'll learn
 a few more concepts essential to making games and generally feel more awesome!
-Let's kick it off by creating a new file called `star.py`. At the top of the 
+Let's kick it off by creating a new file called `star.py`. You'll need to 
+download this image first:
+
+![Star](star.png)
+
+At the top of the 
 file we'll add the following lines of code:
 
 ```python
