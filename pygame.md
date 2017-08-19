@@ -14,6 +14,7 @@ remaining in your pen, etc.
 All games have states as well. Take this classic - Super Mario Brothers!
 
 ![Super Mario Brothers](http://www.retrogames.cz/games/005/NES_01.gif)
+
 http://www.retrogames.cz/games/005/NES_01.gif
 
 When you first start the game your state will be Mario's position at the left
@@ -237,6 +238,7 @@ pygame.draw.rect(screen,GREEN,(WIDTH - 40, HEIGHT - 30, 30, 20))
 ```
 
 We should now see this:
+
 ![Green Rectangle](Green_Rectangle.png)
 
 Nice! That should be all right for the green rectangle for now. 
