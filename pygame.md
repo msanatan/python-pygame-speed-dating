@@ -462,3 +462,71 @@ animation showing something like this:
 2. If SPEED was a tuple instead of a list, would the code work? Why/Why not?
 3. Change the FPS from 60 to 30, what changed?
 
+
+## Intro to Keyboard Input
+Well I need to take a bathroom break, but don't want to miss all the action with
+my star! I got the perfect solution, I'll make it possible to pause my animation
+so that I can take as much breaks as I want for however long without missing
+anything. Let's begin by creating a variable that states whether our animation
+is paused or not.
+
+```python
+screen = pygame.display.set_mode(SIZE)
+clock = pygame.time.Clock()
+paused = False # as long as this is False the animation should go on
+```
+
+So far so good. Now let's get to the fun part! The following code toggles
+our animation's paused state by pressing spacebar on the keyboard:
+
+```python3
+if event.type == pygame.QUIT:
+    pygame.quit()
+    sys.exit()
+elif event.type == pygame.KEYDOWN:
+    if event.key == pygame.K_SPACE:
+        paused = not paused
+```
+
+Someone won't quit and pause the game at the same time, so it's OK to have an
+if-elif statement here. In Pygame and many other libraries, typing
+one key on your keyboard is actually two events. One event is the key being
+pressed down, the other is the key be released (so you lifting your finger).
+Before we check what key was pressed, we first want to see if a key was being
+pressed down. After we'd like to check whether spacebar was the key pressed. 
+If it was, simply set paused to the opposite value. That way, while the game is
+not paused then it'll be paused and if it's paused it'll be unpaused.
+
+Not bad, but right now it doesn't do anything. When we pause a game, what we 
+want it do is stop updating it's state. Imagine pausing a racing game where
+the race still goes on - crazy right? So let's modify this block of code:
+
+```python
+star_rect = star_rect.move(SPEED)
+if star_rect.left < 0 or star_rect.right > WIDTH:
+    SPEED[0] = -SPEED[0]
+if star_rect.top < 0 or star_rect.bottom > HEIGHT:
+    SPEED[1] = -SPEED[1]
+```
+
+To:
+
+```python
+if not paused:
+    star_rect = star_rect.move(SPEED)
+    if star_rect.left < 0 or star_rect.right > WIDTH:
+        SPEED[0] = -SPEED[0]
+    if star_rect.top < 0 or star_rect.bottom > HEIGHT:
+        SPEED[1] = -SPEED[1]
+```
+
+Pay attention to the indentation!!! So now our star only moves if it is not
+paused. This is perfect! Try it out and see that you can pause the
+animation now.
+
+## Exercises 3
+1. Modify the code so that pressing ESC also quits Pygame
+2. Modify the code so that pressing up changes the direction of the star
+    from top to bottom and vice versa
+3. Modify the code so that pressing right changes the direction of the star
+    from left to right and vice versa
