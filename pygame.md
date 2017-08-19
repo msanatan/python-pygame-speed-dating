@@ -233,9 +233,10 @@ would look better if we had some space from the corner, don't you think?
 Let's try this instead:
 
 ```python
-pygame.draw.rect(screen,GREEN,(WIDTH - 40, HEIGHT - 30, WIDTH - 10, HEIGHT -10))
+pygame.draw.rect(screen,GREEN,(WIDTH - 40, HEIGHT - 30, 30, 20))
 ```
 
+Nice! That should be all right for the green rectangle for now. 
 
 ## Exercises
 1. Read the following documentation for drawing circles:
