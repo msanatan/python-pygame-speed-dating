@@ -326,7 +326,7 @@ default, the x and y coordinates are both 0. Let's move on the actual
 logic of moving.
 
 ```python
-while 1:
+while True:
     # Look for events quit Pygame correctly if the user wants to leave
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -409,7 +409,7 @@ screen = pygame.display.set_mode(SIZE)
 star = pygame.image.load('star.png').convert()
 star_rect = star.get_rect()
 
-while 1:
+while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
