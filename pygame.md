@@ -236,6 +236,9 @@ Let's try this instead:
 pygame.draw.rect(screen,GREEN,(WIDTH - 40, HEIGHT - 30, 30, 20))
 ```
 
+We should now see this:
+![Green Rectangle](Green_Rectangle.png)
+
 Nice! That should be all right for the green rectangle for now. 
 
 ## Exercises
