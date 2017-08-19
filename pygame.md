@@ -243,7 +243,7 @@ We should now see this:
 
 Nice! That should be all right for the green rectangle for now.
 
-## Exercises
+## Exercises 1
 1. Let's draw one more rectangle, a white rectangle in the centre of the screen.
     This rectangle will be 40px wide and 80px long. Think about the coordinates
     a bit. We define the top left coordinates. We can get the centre by halving
@@ -258,5 +258,9 @@ Nice! That should be all right for the green rectangle for now.
 3. Read the following documentation for drawing ellipses:
     https://www.pygame.org/docs/ref/draw.html#pygame.draw.ellipse
     Draw a green ellipse in place of the green rectangle
+
+The final result should look like this:
+
+![Shapes](Shapes.png)
 
 ## Animation
