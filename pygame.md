@@ -264,3 +264,201 @@ The final result should look like this:
 ![Shapes](Shapes.png)
 
 ## Animation
+We're going to step it up a bit and move an image around a screen. You'll learn
+a few more concepts essential to making games and generally feel more awesome!
+Let's kick it off by creating a new file called `star.py`. At the top of the 
+file we'll add the following lines of code:
+
+```python
+import pygame, sys
+
+pygame.init()
+pygame.display.set_caption('Super Star')
+```
+
+Similar to before, we import the Pygame library and the sys module. You can
+import more than one module by separating them with commas. For larger programs
+and game it's suggested that you import modules individually like we did with
+the rectangles. We'll go on to define some constants in our game:
+
+```python
+SIZE = WIDTH, HEIGHT = (800, 640)
+SPEED = [2, 2] # This says that our star moves 2px right and down
+BLACK = (0, 0, 0)
+
+screen = pygame.display.set_mode(SIZE)
+```
+
+Python gets more interesting does it? While WIDTH and HEIGHT have the individual
+values of the screen's dimensions, SIZE is a tuple containing the values. Why
+make the extra variable? It makes it cleaner when setting the size in the screen
+variable. At least this way we don't have to worry about forgetting extra 
+brackets.
+
+Now let's add two interesting lines of code:
+```python
+star = pygame.image.load('star.png').convert()
+star_rect = star.get_rect()
+```
+
+Despite never writing code like that before, the first line is nearly 
+self-explanatory: Load the star image with Pygame. The `convert()` at the end
+of the code isn't necessary - but you should always do it after loading an
+image! Once an image is converted, Pygame has stored it in the optimal format
+to be rendered. If you don't call `convert()` when loading the function, Pygame
+will convert it each time the image is rendered on the screen. While for this
+example that should be fine, for a game with lots of images that constant
+conversation would probably slow things down.
+
+The second line is slightly more interesting. Recall when we drew the rectangles
+earlier we had to enter its coordinates, width and height? That tuple of 4 items
+was a substitue for a Rect. Every rectangular object we render on the screen has
+a corresponding Rect. As we know Python has many data structures like Lists,
+Tuples and Dictionaries. Python also allows programmers to create their own data
+structures. The team behind Pygame made a Rect data structure (technically a
+class) to make manipulation of objects on the screen a lot easier and
+standardised. 
+
+Pygame renders to the screen by taking an image to draw and placing it in a 
+Rect - which is akin to a placeholder on the screen. When we use the 
+`get_rect()` function, we get a Rect to fit the image we want to display. By
+default, the x and y coordinates are both 0. Let's move on the actual
+logic of moving.
+
+```python
+while 1:
+    # Look for events quit Pygame correctly if the user wants to leave
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    # Move a rectangle by SPEED (at first this is 2px right and down)
+    star_rect = star_rect.move(SPEED)
+    
+    # If the star hits either the left or right edge of the screen, make it go
+    # the other direction
+    if star_rect.left < 0 or star_rect.right > WIDTH:
+        SPEED[0] = -SPEED[0]
+    # If the star hits the top or bottom of the screen, make it go the opposite
+    # way
+    if star_rect.top < 0 or star_rect.bottom > HEIGHT:
+        SPEED[1] = -SPEED[1]
+
+    screen.fill(BLACK)
+    # Tell Pygame to place the star image where the star rectangle is
+    screen.blit(star, star_rect)
+    pygame.display.update()
+
+```
+
+The code under the for loop is the same before. We see `star_rect` being updated
+by itself and the move function. The move function is only available to  Rects.
+It simply moves the Rect by the amount of pixels we provide. In this case we use
+the SPEED variable, so our shape initially moves 2px to the right and 2px
+downwards. Note that the move function doesn't change the Rect, it creates a new
+one. That's why we have to make star_rect equal to itself using the move
+function.
+
+Let's have a look at the if-statements:
+
+```python
+if star_rect.left < 0 or star_rect.right > WIDTH:
+    SPEED[0] = -SPEED[0]
+if star_rect.top < 0 or star_rect.bottom > HEIGHT:
+    SPEED[1] = -SPEED[1]
+```
+
+The Rect class has properties like left, right, top and bottom which give use
+the coordinate of where that edge is. So left and right gives us the 
+x-coordinate values of the left and right sides of the rectangle. Top and bottom
+gives us the y-coordinate values of the top and bottom sides of the rectangle.
+So let's think about it for a bit, if the star went all the way to the right
+then we'd want it to start going to the left. Given how coordinates are, to go
+from right to left we need to subtract from the star's x-coordinate. So our
+x-speed should change from 2 to -2. What happens we reach the left end? Well
+we should start back increasing the star's x-coordinate to move from left to
+right. So our x-speed should change from -2 to 2. Essentially, to go the
+opposite way we need to inverse the speed i.e. multiply by -1.
+
+The astute coder would notice this line which is new as well:
+
+```python
+screen.blit(star, star_rect)
+```
+So why are we doing this? Blit simply means draw and image within the bounds of
+a rectangle on the screen. Why didn't we do this when we drew rectangles? The
+nice developers of Pygame does that for us automatically when we use draw
+function, so need to blit for those shapes. For our own images and text, we blit
+them before we display them.
+
+You final code should look like this:
+
+```python
+import sys, pygame
+
+pygame.init()
+pygame.display.set_caption('Super Star')
+
+SIZE = WIDTH, HEIGHT = (800, 640)
+SPEED = [2, 2]
+BLACK = (0, 0, 0)
+
+screen = pygame.display.set_mode(SIZE)
+
+star = pygame.image.load('star.png').convert()
+star_rect = star.get_rect()
+
+while 1:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    star_rect = star_rect.move(SPEED)
+    if star_rect.left < 0 or star_rect.right > WIDTH:
+        SPEED[0] = -SPEED[0]
+    if star_rect.top < 0 or star_rect.bottom > HEIGHT:
+        SPEED[1] = -SPEED[1]
+
+    screen.fill(BLACK)
+    screen.blit(star, star_rect)
+    pygame.display.update()
+
+```
+
+Give it a run!
+
+Wait a minute, that star is going really quickly... too quickly. If a game
+moved at that speed, players won't know what's going on. Well if we don't tell
+Pygame how often to render images on the screen, it'll try to render as fast as
+it reasonably can. This can't work for us. We need to tell Pygame how many times
+to render images so that it appears smoothly. So let's add the FPS to this 
+script.
+
+First we'll declare a clock variable right below the screen variable
+
+```python
+screen = pygame.display.set_mode(SIZE)
+clock = pygame.time.Clock()
+```
+
+Then right after we update the display, we'll tell the clock to only show 60
+frames per second
+
+```python
+pygame.display.update()
+clock.tick(60)
+```
+
+Now with those additions run your code. Much better! You should have a smooth
+animation showing something like this:
+
+![Super Star](Super_Star.png)
+
+## Exercises 2
+1. To keep the star within bounds we use two if statements. Why couldn't we use
+    an if-else statement there?
+2. If SPEED was a tuple instead of a list, would the code work? Why/Why not?
+3. Change the FPS from 60 to 30, what changed?
+
