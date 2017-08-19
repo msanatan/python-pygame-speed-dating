@@ -241,13 +241,21 @@ We should now see this:
 
 ![Green Rectangle](Green_Rectangle.png)
 
-Nice! That should be all right for the green rectangle for now. 
+Nice! That should be all right for the green rectangle for now.
 
 ## Exercises
-1. Read the following documentation for drawing circles:
+1. Let's draw one more rectangle, a white rectangle in the centre of the screen.
+    This rectangle will be 40px wide and 80px long. Think about the coordinates
+    a bit. We define the top left coordinates. We can get the centre by halving
+    WIDTH and HEIGHT. Think about how far the top left coordinates are from
+    the centre and you'll figure it out. It may also help if you first placed
+    the top left of the white rectangle in the centre and then figure out the
+    distance.
+2. Read the following documentation for drawing circles:
     https://www.pygame.org/docs/ref/draw.html#pygame.draw.circle
-    Draw a red circle in place of the red rectangle
-2. Read the following documentation for drawing ellipses:
+    Draw a red circle  of radius 25 in place of the red rectangle. Use (25, 25)
+    as the position.
+3. Read the following documentation for drawing ellipses:
     https://www.pygame.org/docs/ref/draw.html#pygame.draw.ellipse
     Draw a green ellipse in place of the green rectangle
 
