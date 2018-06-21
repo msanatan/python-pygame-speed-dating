@@ -1,3 +1,9 @@
+# Attention!
+
+The contents of this repo will be migrated to https://github.com/clicktostart
+All future updates will happen within the organisation's repo.
+
+
 # Python and Pygame Speed Dating
 
 Quick crash courses over basic Python 3 language features and Pygame
